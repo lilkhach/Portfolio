@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block bodycontent %}
+
+<section id="resume" class="resume">
+<div class="container">
+
+    <div class="section-title">
+    <h2>Resume</h2>
+    <p>As a beginner Python Developer with a background in Biology, Veterinary Medicine, and Design, I bring a diverse skill set and a unique 
+        perspective to software development. With a passion for innovation and a commitment to excellence, 
+        I am excited to contribute my expertise to create impactful solutions in the ever-evolving world of technology.</p>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-6" data-aos="fade-up">
+        <h3 class="resume-title">Sumary</h3>
+        <div class="resume-item pb-0">
+        <h4>Lilit Khachatryan</h4>
+        <p><em>Innovative and deadline-driven Graphic Designer with 3+ years of experience designing and developing user-centered digital/print marketing material from initial concept to final, polished deliverable.</em></p>
+        <ul>
+            <li>Acharyan 1, Yerevan, Armenia</li>
+            <li>+374 94 864060</li>
+            <li><a href="mailto:lilit.khachatryan.botany@gmail.com">{{email}}</a></li>
+        </ul>
+        </div>
+
+        <h3 class="resume-title">Education</h3>
+        {% for study_type in study %}
+        <div class="resume-item">
+        <h4>{{study_type.degree}}</h4>
+        <h5>{{study_type.start_date}}-{% if study_type.is_current %} present {% else %} {{study_type.end_date}} {% endif %}</h5>
+        <p><em>{{study_type.university_name}}</em></p>
+        <p>{{study_type.thesis_title}}</p>
+        </div>
+        {% endfor %}
+        
+    </div>
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-title">Professional Experience</h3>
+        {% for job in jobs %}
+        <div class="resume-item">
+        <h4>{{job.position}}</h4>
+        <h5>{{job.start_date}}-{% if job.is_current %} present {% else %} {{job.end_date}} {% endif %}</h5>
+        <p><em>{{job.company_name}}</em></p>
+        </div>
+        {% endfor %}
+        
+    </div>
+    </div>
+
+</div>
+</section>
+{% endblock %}
