@@ -2,11 +2,70 @@
 {% load static %}
 {% block bodycontent %}
 
-
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
+  <div class="hero-container" data-aos="fade-in">
     <h1>Lilit Khachatryan</h1>
-    <p>I'm <span class="typed" data-typed-items="Beginner Python Developer, Researcher, Vet, Knit and Crochet Designer"></span></p>
-    </div>
+    <p>I'm <span class="typed-text"><span></span></span></p>
+    
+  </div>
 </section>
+
+<main id="main"></main>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const typedElement = document.querySelector(".typed-text span");
+    let typedItems = ["Beginner Python Developer", "Researcher", "Vet", "Knit and Crochet Designer"];
+    let currentItem = 0;
+    let currentText = "";
+    let isDeleting = false;
+
+    function type() {
+      const item = typedItems[currentItem];
+      if (isDeleting) {
+        currentText = item.substring(0, currentText.length - 1);
+      } else {
+        currentText = item.substring(0, currentText.length + 1);
+      }
+
+      typedElement.textContent = currentText;
+
+      let typeSpeed = 100;
+
+      if (isDeleting) {
+        typeSpeed /= 2; // Adjust the delete speed if needed
+      }
+
+      if (!isDeleting && currentText === item) {
+        typeSpeed = 1000; // Time to wait before starting to delete
+        isDeleting = true;
+      } else if (isDeleting && currentText === "") {
+        isDeleting = false;
+        currentItem = (currentItem + 1) % typedItems.length;
+      }
+
+      setTimeout(type, typeSpeed);
+    }
+
+    type(); // Start the typing animation
+
+    // Function to add or remove items from the list
+    function addOrRemoveItem() {
+      if (typedItems.length > 1) {
+        // Remove the last item
+        typedItems.pop();
+      } else {
+        // Add a new item
+        typedItems.push("New Item");
+      }
+
+      // Reset the typing animation
+      currentItem = 0;
+      currentText = "";
+      isDeleting = false;
+    }
+  });
+</script>
 {% endblock %}
+
+
