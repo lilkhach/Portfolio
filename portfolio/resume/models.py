@@ -1,10 +1,28 @@
+from datetime import datetime
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.contrib.auth import get_user_model
+
+
+User = get_user_model()
 
 # Create your models here.
 
 class SkillManager(models.Manager):
     pass
+
+class PersonalInfo(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    birth_year = models.PositiveIntegerField()
+
+    def age(self):
+        current_year = datetime.now().year
+        return current_year - self.birth_year
+
+
+
+    objects = SkillManager() 
+
 
 class Skill(models.Model):
     name = models.TextField(max_length=30)
@@ -73,3 +91,24 @@ class Service(models.Model):
 
     def __str__(self) -> str:
         return f"{self.title}"
+    
+class SocialLink(models.Model):
+    link = models.URLField()
+    class_name = models.CharField(max_length=100, blank=True, null=True)
+    icon_name = models.CharField(max_length=100, blank=True, null=True)
+
+    objects = SkillManager()
+
+    def __str__(self) -> str:
+        return f"{self.class_name}"
+    
+class Navbar(models.Model):
+    href = models.CharField(max_length=100)
+    class_name = models.CharField(max_length=100, blank=True, null=True)
+    icon_class = models.CharField(max_length=100, blank=True, null=True)
+    section_name = models.CharField(max_length=100, blank=True, null=True)
+
+    objects = SkillManager()
+
+    def __str__(self) -> str:
+        return f"{self.section_name}"

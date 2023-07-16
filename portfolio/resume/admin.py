@@ -1,5 +1,14 @@
 from django.contrib import admin
-from .models import Skill, Education, WorkExperience, Languages, Photo, Service
+from .models import (
+    Skill, 
+    Education, 
+    WorkExperience, 
+    Languages, 
+    Photo, 
+    Service, 
+    PersonalInfo, 
+    SocialLink, 
+    Navbar)
 
 # Register your models here.
 class SkillAdmin(admin.ModelAdmin):
@@ -36,10 +45,23 @@ class ServiceAdmin(admin.ModelAdmin):
     search_fields = ["title"]
 
 
+class SocialLinkAdmin(admin.ModelAdmin):
+    list_display = ["link"]
+    search_fields = ["link"]
+
+
+class NavbarAdmin(admin.ModelAdmin):
+    list_display = ["section_name"]
+
+
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(WorkExperience, WorkAdmin)
 admin.site.register(Languages, LanguageAdmin)
 admin.site.register(Photo, PhotoAdmin)
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(PersonalInfo)
+admin.site.register(SocialLink, SocialLinkAdmin)
+admin.site.register(Navbar, NavbarAdmin)
+
 
