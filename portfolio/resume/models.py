@@ -14,6 +14,13 @@ class SkillManager(models.Manager):
 class PersonalInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     birth_year = models.PositiveIntegerField()
+    city = models.CharField(max_length=50, blank=True, null=True)
+    phone = models.CharField(max_length=50, blank=True, null=True)
+    quote = models.CharField(max_length=200, blank=True, null=True)
+    birthday = models.CharField(max_length=50, blank=True, null=True)
+    degree = models.CharField(max_length=50, blank=True, null=True)
+    website = models.URLField(blank=True, null=True)
+    address = models.CharField(max_length=150, blank=True, null=True)
 
     def age(self):
         current_year = datetime.now().year

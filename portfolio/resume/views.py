@@ -31,11 +31,7 @@ def home(request) -> HttpResponse:
 
 
 
-    return render(request, "index.html", context={"name": "Lilit", "surname": "Khachatryan", 
-                                                  "quote": "Be a voice, not an echo...", 
-                                                  "email": "lilit.khachatryan.botany@gmail.com",
-                                                  "phone": "+374 94 864060",
-                                                  "skills": skills,
+    return render(request, "index.html", context={"skills": skills,
                                                   "study": studies,
                                                   "jobs": jobs, 
                                                   "languages": languages,

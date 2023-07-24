@@ -15,19 +15,19 @@
         <div class="address">
             <i class="bi bi-geo-alt"></i>
             <h4>Location:</h4>
-            <p>Acharyan 1, Yerevan, Armenia</p>
+            <p>{{ personal_info.address }}</p>
         </div>
 
         <div class="email">
             <i class="bi bi-envelope"></i>
             <h4>Email:</h4>
-            <p><a href="mailto:lilit.khachatryan.botany@gmail.com">{{email}}</a></p>
+            <p><a href="mailto:{{ personal_info.user.email }}">{{ personal_info.user.email }}</a></p>
         </div>
 
         <div class="phone">
             <i class="bi bi-phone"></i>
             <h4>Call:</h4>
-            <p>{{phone}}</p>
+            <p>{{ personal_info.phone }}</p>
         </div>
 
         <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3046.6508837734737!2d44.5597978!3d40.2168282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2e471c3704b%3A0x6c0a5b7f8c4134c3!2s1%20Acharyan%20St%2C%20Yerevan%200040!5e0!3m2!1sen!2sam!4v1689268426985!5m2!1sen!2sam" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
