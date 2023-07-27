@@ -25,7 +25,7 @@ def home(request) -> HttpResponse:
         form = MessageForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("/#contact")
+            
 
 
     skills = Skill.objects.all()
@@ -56,6 +56,3 @@ def home(request) -> HttpResponse:
                                                   "messageForm": messageForm}
                                                   )
 
-def portfolio_project(request, pk):
-    project = get_object_or_404(PortfolioProject, id=pk)
-    return render(request, "portfolio_details.html", context={"project": project})
