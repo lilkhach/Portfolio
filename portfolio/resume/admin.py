@@ -8,7 +8,8 @@ from .models import (
     Service, 
     PersonalInfo, 
     SocialLink, 
-    Navbar)
+    Navbar,
+    Message)
 
 # Register your models here.
 class SkillAdmin(admin.ModelAdmin):
@@ -63,5 +64,4 @@ admin.site.register(Service, ServiceAdmin)
 admin.site.register(PersonalInfo)
 admin.site.register(SocialLink, SocialLinkAdmin)
 admin.site.register(Navbar, NavbarAdmin)
-
-
+admin.site.register(Message)

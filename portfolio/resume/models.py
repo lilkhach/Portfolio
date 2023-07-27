@@ -119,3 +119,12 @@ class Navbar(models.Model):
 
     def __str__(self) -> str:
         return f"{self.section_name}"
+
+class Message(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=150)
+    message = models.TextField(max_length=1000)
+
+    objects = SkillManager()
+
