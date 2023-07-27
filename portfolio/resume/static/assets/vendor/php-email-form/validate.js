@@ -3,26 +3,21 @@
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
 */
-
 (function () {
   "use strict";
 
   let forms = document.querySelectorAll('.php-email-form');
 
-  forms.forEach(function(e) {
+  forms.forEach( function(e) {
     e.addEventListener('submit', function(event) {
       event.preventDefault();
 
       let thisForm = this;
-      let submitBtn = thisForm.querySelector('#submit-btn');
-
-      // Disable the submit button to prevent multiple submissions
-      submitBtn.disabled = true;
 
       let action = thisForm.getAttribute('action');
       let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
       
-      if (!action) {
+      if( ! action ) {
         displayError(thisForm, 'The form action property is not set!');
         return;
       }
@@ -30,10 +25,10 @@
       thisForm.querySelector('.error-message').classList.remove('d-block');
       thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData(thisForm);
+      let formData = new FormData( thisForm );
 
-      if (recaptcha) {
-        if (typeof grecaptcha !== "undefined") {
+      if ( recaptcha ) {
+        if(typeof grecaptcha !== "undefined" ) {
           grecaptcha.ready(function() {
             try {
               grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
@@ -61,7 +56,7 @@
       headers: {'X-Requested-With': 'XMLHttpRequest'}
     })
     .then(response => {
-      if (response) {
+      if( response ) {
         return response.text();
       } else {
         throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
@@ -78,10 +73,6 @@
     })
     .catch((error) => {
       displayError(thisForm, error);
-    })
-    .finally(() => {
-      // Enable the submit button after form submission (success or error)
-      submitBtn.disabled = false;
     });
   }
 

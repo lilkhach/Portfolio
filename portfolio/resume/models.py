@@ -125,6 +125,7 @@ class Message(models.Model):
     email = models.EmailField()
     subject = models.CharField(max_length=150)
     message = models.TextField(max_length=1000)
+    created_on = models.DateTimeField(auto_now=True)
 
     objects = SkillManager()
 

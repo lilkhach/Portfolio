@@ -55,6 +55,10 @@ class NavbarAdmin(admin.ModelAdmin):
     list_display = ["section_name"]
 
 
+class Messagedmin(admin.ModelAdmin):
+    list_display = ["full_name", "email", "subject", "created_on"]
+
+
 admin.site.register(Skill, SkillAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(WorkExperience, WorkAdmin)
@@ -64,4 +68,4 @@ admin.site.register(Service, ServiceAdmin)
 admin.site.register(PersonalInfo)
 admin.site.register(SocialLink, SocialLinkAdmin)
 admin.site.register(Navbar, NavbarAdmin)
-admin.site.register(Message)
+admin.site.register(Message, Messagedmin)
