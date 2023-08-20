@@ -2,6 +2,36 @@
 {% load static %}
 {% block bodycontent %}
 
+<div class="cookie-banner">
+  <p>This website uses cookies. Do you accept?</p>
+  <button id="accept-cookies">Accept</button>
+  <button id="decline-cookies">Decline</button>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const cookieBanner = document.querySelector(".cookie-banner");
+    const acceptButton = document.getElementById("accept-cookies");
+    const declineButton = document.getElementById("decline-cookies");
+
+    acceptButton.addEventListener("click", function() {
+      document.cookie = "cookies_accepted=true; expires=365; path=/";
+      cookieBanner.style.display = "none";
+    });
+
+    declineButton.addEventListener("click", function() {
+      // Handle decline action here (e.g., remove cookies)
+      cookieBanner.style.display = "none";
+    });
+
+    if (document.cookie.includes("cookies_accepted=true")) {
+      cookieBanner.style.display = "none";
+    } else {
+      cookieBanner.style.display = "block";
+    }
+  });
+</script>
+
 <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
   <div class="hero-container" data-aos="fade-in">
     <h1>{{ personal_info.user.first_name }} {{ personal_info.user.last_name }}</h1>
@@ -66,6 +96,9 @@
     }
   });
 </script>
+
+
+
 {% endblock %}
 
 

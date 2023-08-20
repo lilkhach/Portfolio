@@ -260,3 +260,7 @@
   new PureCounter();
 
 })()
+
+function disableButton() {
+  // Add the logic to disable the button here
+}
